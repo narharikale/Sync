@@ -3,16 +3,10 @@ import {
     Flex,
     FormControl,
     FormLabel,
-    Heading,
     Input,
     Stack,
     useColorModeValue,
-    HStack,
-    Avatar,
-    AvatarBadge,
-    IconButton,
     Center,
-    Box,
     Text
   } from '@chakra-ui/react';
   
