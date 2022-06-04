@@ -1,7 +1,6 @@
 import {
     Button,
     chakra,
-    Flex,
     FormControl,
     FormLabel,
     Input,
@@ -12,16 +11,13 @@ import {
     Text
   } from '@chakra-ui/react';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { userLogin } from '../slice/authslice';  
 
 
 
 
 const Login = () =>  {
-
-  const authState = useSelector( store => store.auth);
-  const { status }  = authState ;
   const dispatch = useDispatch()
   const [ username , setUserName ]  = useState("");
   const [ password  , setPassword ] =  useState("");
