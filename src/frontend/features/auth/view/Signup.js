@@ -22,7 +22,7 @@ export const Signup = () =>  {
     password:""
   })
 
-  const  dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const userdataHandler = (e) => {
         setUserdata({
@@ -33,7 +33,7 @@ export const Signup = () =>  {
   
   const signupHandler = (e , userdata ) => {
     e.preventDefault()
-    dispatch(userSignup(userdata))
+    dispatch(userSignup( userdata ))
   }
 
   return (
@@ -63,7 +63,7 @@ export const Signup = () =>  {
             <Input
               placeholder="First Name"
               name='firstname'
-              value={userdata.firstname}
+              value={ userdata.firstname }
               _placeholder={{ color: 'gray.500' }}
               type="text"
               onChange={ userdataHandler }

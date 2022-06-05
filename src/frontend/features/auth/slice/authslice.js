@@ -23,10 +23,10 @@ const userLogin = createAsyncThunk(
 const userSignup = createAsyncThunk(
     "auth/userSignup" , 
     async({ userData }) => {
-        const { data }  = await axios.post("api/auth/login" , {
+        const { data }  = await axios.post("api/auth/signup" , {
             ...userData
         })
-        return data ;
+        return data;
     }
 ); 
 
@@ -59,7 +59,7 @@ const authSlice = createSlice({
         });
 
         builder.addCase(userLogin.rejected ,(state , { payload }) =>{
-            state.status="rejected" ;
+            state.status="rejected";
             state.error = payload
             toast.error("user not able to Login")
         });
