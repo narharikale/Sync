@@ -1,6 +1,5 @@
 import axios from "axios" ;
 import { createSlice , createAsyncThunk } from "@reduxjs/toolkit";
-import toast from 'react-hot-toast'
 
 const initialState = {
 	status: null,
@@ -40,48 +39,43 @@ const authSlice = createSlice({
             state.user = null ;
             localStorage.removeItem("TOKEN");
             localStorage.removeItem("USER");
-            toast.success("Sucessfully logged out")
         }
     },
-    extraReducers: (builder) => {
+    extraReducers: {
         
-        builder.addCase(userLogin.pending , (state) => {
+        [userLogin.pending] : (state) => {
             state.status = "loading";
-        });
+        },
 
-        builder.addCase(userLogin.fulfilled , (state , { payload }) => {
+        [userLogin.fulfilled] : (state , { payload }) => {
             state.status = "success";
             state.token = payload.encodedToken;
             state.user = payload.foundUser;
             localStorage.setItem("TOKEN", payload.encodedToken);
             localStorage.setItem("USER", JSON.stringify(state.user))
-            toast.success("sucessfully logged in")
-        });
+        },
 
-        builder.addCase(userLogin.rejected ,(state , { payload }) =>{
+        [userLogin.rejected] : (state , { payload }) =>{
             state.status="rejected";
             state.error = payload
-            toast.error("user not able to Login")
-        });
+        },
 
-        builder.addCase(userSignup.pending , (state) => {
-            state.status="pending";
-        });
+        [userSignup.pending] : (state) => {
+            state.status="loading";
+        },
 
-        builder.addCase(userSignup.fulfilled , (state , { payload }) => {
+        [userSignup.fulfilled] : (state , { payload }) => {
             state.status = "success";
             state.token = payload.encodedToken;
-            state.user = payload.foundUser;
+            state.user = payload.createdUser;
             localStorage.setItem("TOKEN", payload.encodedToken);
             localStorage.setItem("USER", JSON.stringify(state.user))
-            toast.success("account created successfully")
-        });
+        },
 
-        builder.addCase(userSignup.rejected ,(state , { payload }) =>{
+        [userSignup.rejected] : (state , { payload }) =>{
             state.status="rejected" ;
             state.error = payload
-            toast.error("some error occured")
-        });
+        },
     }
 })
 
