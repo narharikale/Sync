@@ -6,6 +6,8 @@ export { ProfileIcon } from './icons/Profile.js';
 export { SearchIcon } from './icons/Search.js';
 export { UsersIcon } from './icons/Users.js';
 export { SettingsIcon } from './icons/Settings';
+export { VerticalmoreIcon } from './icons/Verticalmore';
+export { LogoutIcon } from './icons/Logout';
 export { PostEditor } from './post/PostEditor.js';
 export { PostCard } from './post/PostCard.js';
 export { Profile } from './profile/Profile';
