@@ -1,5 +1,4 @@
 
-import { DragHandleIcon } from '@chakra-ui/icons';
 import {
   Box,
   Center,
@@ -8,9 +7,15 @@ import {
   Avatar,
   useColorModeValue,
   Flex,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from '@chakra-ui/react';
 import { CommentIcon } from '../icons/Comment';
 import { LikeIcon } from '../icons/Like';
+import { VerticalmoreIcon } from '../icons/Verticalmore';
 
  function PostCard() {
   return (
@@ -36,7 +41,20 @@ import { LikeIcon } from '../icons/Like';
             <Flex mt={4} gap={5}> <CommentIcon/>  <LikeIcon/> </Flex>
           </Box>
             <Box>
-                <DragHandleIcon/>
+              <Menu>
+                <MenuButton 
+                as={Button}
+                size='sm' 
+                borderColor={'gray.300'} 
+                bg={'white'} 
+                > 
+                <VerticalmoreIcon/> 
+                </MenuButton>
+                <MenuList border='1px solid black' boxShadow='3px 3px 0px #212121' p='4px' rounded='4px' bg='white' alignItems={'center'}>
+                  <MenuItem display="flex" gap='2px'> Edit</MenuItem>
+                  <MenuItem display="flex" gap='2px'> Delete</MenuItem>
+                </MenuList>
+              </Menu>
             </Box>
         </Stack>    
       </Box>
