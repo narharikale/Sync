@@ -12,11 +12,17 @@ import {
   Stack,
   Container,
 } from '@chakra-ui/react';
-import { ProfileIcon, SettingsIcon } from '../components';
-
+import { LogoutIcon, ProfileIcon, SettingsIcon } from '../components';
+import { useDispatch } from 'react-redux';
+import { logout } from '../features/auth/slice/authslice';
 
 
 function Navbar() {
+
+  const dispatch = useDispatch();
+  const logoutHandler = () => {
+      dispatch(logout())
+  }
 
   return (
     <>
@@ -25,7 +31,7 @@ function Navbar() {
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'} >
           <Box fontSize={'1.5rem'} fontWeight={'bold'} > <LinkIcon  color={'green.400'} />  Sync </Box>
 
-          <Flex alignItems={'center'}>
+          <Flex alignItems={'center'}>  
             <Stack direction={'row'} spacing={7}>
               <Menu>
                 <MenuButton
@@ -50,7 +56,7 @@ function Navbar() {
                   <MenuItem display="flex" gap='6px'> <ProfileIcon /> Profile</MenuItem>
                   <MenuItem display="flex" gap='6px'> <SettingsIcon/> Settings</MenuItem>
                   <MenuDivider />
-                  <MenuItem color='red.500' >Logout</MenuItem>
+                  <MenuItem display="flex" gap='6px' color='red.500' onClick={ logoutHandler } > <LogoutIcon/> Logout</MenuItem>
                 </MenuList>
               </Menu>
             </Stack>
