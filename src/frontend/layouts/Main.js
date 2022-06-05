@@ -1,23 +1,23 @@
-import { Box } from "@chakra-ui/react"
-import { PostCard, PostEditor, RightSidebar} from "../components"
-
+import { Routes  , Route } from 'react-router-dom';
+import { Home } from "../screens/home/Home";
+import { Login } from "../features/auth/view/Login";
+import { Profile } from '../components'
+import { Signup } from "../features/auth/view/Signup";
 
 function Main () {
-        return (
-            <Box  w='100%' display={'flex'} >
-                <Box flexBasis={'65%'}>
-                    <PostEditor/>
-                    <PostCard/>
-                    <PostCard/>
-                    <PostCard/>
-                    <PostCard/>
-                    <PostCard/>
-                </Box>
-                <Box flexBasis={'35%'} bg={'white'} borderLeft={'1px'} borderRight={'1px'} borderColor={'gray.200'}>
-                 <RightSidebar/>
-                </Box>
-            </Box>
-        )
+
+
+    return (
+        <div>
+            <Routes>
+                <Route path='/' element = { <Home/> }/>
+                <Route path='/login' element = { <Login/> }/>
+                <Route path='/signup' element = { <Signup/> }/>
+                <Route path='/profile' element = { <Profile/> }/>
+                
+            </Routes>
+        </div>
+    )
 }
 
 export  { Main }

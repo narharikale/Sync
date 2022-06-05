@@ -10,3 +10,4 @@ export { PostEditor } from './post/PostEditor.js';
 export { PostCard } from './post/PostCard.js';
 export { Profile } from './profile/Profile';
 export { RightSidebar } from './rightSidebar/RightSidebar';
+export { Toast } from './toast/Toast';

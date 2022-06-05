@@ -19,7 +19,7 @@ function PostEditor () {
           variant='unstyled'
           resize={'none'} 
           height={'fit-content'}
-          placeholder='Create a post....' />
+          placeholder='Create a post....'/>
         </Box>
         <Box bg={'gray.100'} 
           px={'1rem'} 
@@ -56,7 +56,7 @@ function PostEditor () {
         </Box>
       </Box>
     </Box>
-          )
+  )
 
 }
 
