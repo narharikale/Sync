@@ -12,7 +12,7 @@ import {
   } from '@chakra-ui/react';
 import { useState } from 'react';
 import { userSignup } from '../slice/authslice';
-import { useDispatch , useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate , useLocation } from 'react-router-dom';
 
 export const Signup = () =>  {
@@ -29,7 +29,6 @@ export const Signup = () =>  {
   })
   const toast = useToast();
   const dispatch = useDispatch();
-  const  state  = useSelector( state => state);
   const userdataHandler = (e) => {
         setUserdata({
           ...userdata,

@@ -15,14 +15,13 @@ import {
 import { LogoutIcon, ProfileIcon, SettingsIcon } from '..';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../features/auth/slice/authslice';
-import { useNavigate , useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function Navbar() {
 
   const navigate = useNavigate();
-  const location = useLocation();
   const dispatch = useDispatch();
   const logoutHandler = () => {
       dispatch(logout());

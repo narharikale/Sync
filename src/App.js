@@ -25,25 +25,12 @@ function App() {
                   </PageContainer>
                 }
                />
-              <Route path='/' element=
+              <Route path='/profile' element=
                 { <PageContainer>
-                    {<Home/>}
+                    {<Profile/>}
                   </PageContainer>
                 }
                />
-              <Route path='/' element=
-                { <PageContainer>
-                    {<Home/>}
-                  </PageContainer>
-                }
-               />
-              <Route path='/' element=
-                { <PageContainer>
-                    {<Home/>}
-                  </PageContainer>
-                }
-               />
-              <Route path='/profile' element={<Profile />} />
             </Route>
 
         </Routes>
