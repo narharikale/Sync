@@ -7,13 +7,19 @@ import {
     Stack,
     useColorModeValue,
     Center,
-    Text
+    Text,
+    useToast
   } from '@chakra-ui/react';
 import { useState } from 'react';
 import { userSignup } from '../slice/authslice';
 import { useDispatch } from 'react-redux';
+import { useNavigate , useLocation } from 'react-router-dom';
 
 export const Signup = () =>  {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const [ userdata , setUserdata] = useState({
     firstname:"",
@@ -21,9 +27,8 @@ export const Signup = () =>  {
     email:"",
     password:""
   })
-
+  const toast = useToast();
   const dispatch = useDispatch();
-
   const userdataHandler = (e) => {
         setUserdata({
           ...userdata,
@@ -31,18 +36,34 @@ export const Signup = () =>  {
         })
   }
   
-  const signupHandler = (e , userdata ) => {
-    e.preventDefault()
-    dispatch(userSignup( userdata ))
+  const signupHandler = async( userdata ) => {
+    const response = await dispatch(userSignup( userdata ))
+    response?.payload?.encodedToken 
+        ? toast({
+        title: 'Account created',
+        description: "You are now Successfully signed up ",
+        status: 'success',
+        duration: 4000,
+        isClosable: true,
+        }) : toast({
+        title: 'Error',
+        description: "Something went wrong",
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      })
+      navigate(from , { replace:true })
   }
 
   return (
+    <Center h='100vh' >
       <chakra.form 
-        onSubmit={ (e) => signupHandler(e, userdata) }
-        minH={'100vh'}
-        align={'center'}
-        justify={'center'}
-        bg={useColorModeValue('gray.50', 'gray.800')}>
+        onSubmit={ (e) => {
+          e.preventDefault()
+          signupHandler( userdata ) 
+        }}
+        minW='23rem'
+        >
         <Stack
           spacing={4}
           w={'full'}
@@ -117,5 +138,6 @@ export const Signup = () =>  {
            <Center>Already have an account ? <Text color={'green.400'} display={'inline'}> Login </Text> </Center>
         </Stack>
       </chakra.form>
+      </Center>
     );
   }
