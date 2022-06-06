@@ -12,7 +12,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-import { HomeIcon ,  UsersIcon , ProfileIcon , NotificationIcon , SearchIcon} from '../components';
+import { HomeIcon ,  UsersIcon , ProfileIcon , NotificationIcon , SearchIcon} from '..';
 
 
 

@@ -13,3 +13,7 @@ export { PostCard } from './post/PostCard.js';
 export { Profile } from './profile/Profile';
 export { RightSidebar } from './rightSidebar/RightSidebar';
 export { Toast } from './toast/Toast';
+export { RequireAuth } from './requireauth/RequireAuth';
+export { PageContainer } from './pagecontainer/PageContainer';
+export { Navbar } from './navbar/Navbar';
+export { SimpleSidebar } from './sidebar/Sidebar';
