@@ -1,8 +1,9 @@
 import { Toast } from "./frontend/components";
 import { Routes  , Route } from 'react-router-dom';
 import { Home } from "./frontend/screens/home/Home";
+import { Profile } from './frontend/screens/profile/Profile';
 import { Login } from "./frontend/features/auth/view/Login";
-import { Profile, RequireAuth , PageContainer } from './frontend/components'
+import { RequireAuth , PageContainer } from './frontend/components'
 import { Signup } from "./frontend/features/auth/view/Signup"; 
 import { Box } from '@chakra-ui/react';
 
