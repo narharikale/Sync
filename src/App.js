@@ -1,4 +1,3 @@
-import { Toast } from "./frontend/components";
 import { Routes  , Route } from 'react-router-dom';
 import { Home } from "./frontend/screens/home/Home";
 import { Profile } from './frontend/screens/profile/Profile';
@@ -12,7 +11,7 @@ function App() {
 
   return (
     <Box bg={'gray.50'} >
-      <Toast />
+      
       <Routes>
             <Route>
                 <Route path='/login' element={<Login />} />

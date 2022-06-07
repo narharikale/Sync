@@ -11,7 +11,6 @@ export { LogoutIcon } from './icons/Logout';
 export { PostEditor } from './post/PostEditor.js';
 export { PostCard } from './post/PostCard.js';
 export { RightSidebar } from './rightSidebar/RightSidebar';
-export { Toast } from './toast/Toast';
 export { RequireAuth } from './requireauth/RequireAuth';
 export { PageContainer } from './pagecontainer/PageContainer';
 export { Navbar } from './navbar/Navbar';
