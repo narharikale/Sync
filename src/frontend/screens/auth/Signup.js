@@ -11,7 +11,7 @@ import {
     useToast
   } from '@chakra-ui/react';
 import { useState } from 'react';
-import { userSignup } from '../slice/authslice';
+import { userSignup } from '../../features/auth/authSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate , useLocation } from 'react-router-dom';
 

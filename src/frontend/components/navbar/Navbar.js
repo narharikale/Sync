@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { LogoutIcon, ProfileIcon, SettingsIcon } from '..';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../features/auth/slice/authslice';
+import { logout } from '../../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 
