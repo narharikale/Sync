@@ -22,7 +22,8 @@ import { VerticalmoreIcon } from '../icons/Verticalmore';
 
 function PostCard( { post } ) {
 
-  const { firstName , lastName , avatarURL , createdAt , content , likes } = post 
+  const { firstName , lastName , avatarURL , createdAt , content , likes } = post === undefined ? {} : post
+
   return (
     <Center>
       <Box
@@ -30,8 +31,8 @@ function PostCard( { post } ) {
         w={'full'}
         bg={'white'}
         p={8}
-        // borderBottom={'1px'}
-        // borderBottomColor={'gray.200'}
+        borderBottom={'1px'}
+        borderBottomColor={'gray.200'}
         overflow={'hidden'}>
         
         <Stack direction={'row'}  align={'start'} justifyContent={'space-between'} w={'100%'}>
@@ -47,7 +48,7 @@ function PostCard( { post } ) {
               <Flex mt={4} gap={5}> 
                 <CommentIcon/>  
                 <Flex gap={1}>
-                  <LikeIcon/> {likes.likeCount}
+                  <LikeIcon/> {likes?.likeCount}
                 </Flex> 
               </Flex>
             </Box>

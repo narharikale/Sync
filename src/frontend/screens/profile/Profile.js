@@ -20,7 +20,7 @@ function Profile() {
         dispatch(getUserPosts(username))
     }, [dispatch , username])
 
-   
+   console.log(userPosts , "useposter")
 
     return (
         <Box
@@ -70,7 +70,7 @@ function Profile() {
              borderBottom={'1px'}
              borderBottomColor={'gray.200'}
              >
-                { userPosts.map( (post , index) => {
+                { userPosts &&  userPosts.map( (post , index) => {
                     return <PostCard key={index}  post={ post }/>
 
                 })}
