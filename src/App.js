@@ -1,9 +1,10 @@
 import { Toast } from "./frontend/components";
 import { Routes  , Route } from 'react-router-dom';
 import { Home } from "./frontend/screens/home/Home";
-import { Login } from "./frontend/features/auth/view/Login";
-import { Profile, RequireAuth , PageContainer } from './frontend/components'
-import { Signup } from "./frontend/features/auth/view/Signup"; 
+import { Profile } from './frontend/screens/profile/Profile';
+import { Login } from "./frontend/screens/auth/Login";
+import { RequireAuth , PageContainer } from './frontend/components'
+import { Signup } from "./frontend/screens/auth/Signup"; 
 import { Box } from '@chakra-ui/react';
 
 
@@ -25,7 +26,7 @@ function App() {
                   </PageContainer>
                 }
                />
-              <Route path='/profile' element=
+              <Route path='/profile/:username' element=
                 { <PageContainer>
                     {<Profile/>}
                   </PageContainer>

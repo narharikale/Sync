@@ -13,16 +13,10 @@ import {
 } from '@chakra-ui/react';
 
 import { HomeIcon ,  UsersIcon , ProfileIcon , NotificationIcon , SearchIcon} from '..';
+import { useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom';
 
 
-
-const LinkItems = [
-  { name: 'Home', icon: HomeIcon },
-  { name: 'Network', icon: UsersIcon },
-  { name: 'Find', icon: SearchIcon },
-  { name: 'Notifications', icon: NotificationIcon },
-  { name: 'Profile', icon: ProfileIcon },
-];
 
 function SimpleSidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -57,6 +51,17 @@ function SimpleSidebar({ children }) {
 
 
 const SidebarContent = ({ onClose, ...rest }) => {
+
+  const user = useSelector((state) => state.auth.user);
+
+  const LinkItems = [
+    { name: 'Home', icon: HomeIcon  , path:'/'},
+    { name: 'Network', icon: UsersIcon , path:'/network' },
+    { name: 'Find', icon: SearchIcon , path:'/find' },
+    { name: 'Notifications', icon: NotificationIcon , path:'/notifications'},
+    { name: 'Profile', icon: ProfileIcon  , path:`/profile/${user?.username}`},
+  ];
+
   return (
     <Box
       
@@ -70,7 +75,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon} marginTop={2} >
+        <NavItem path={link.path} key={link.name} icon={link.icon} marginTop={2} >
           {link.name}
         </NavItem>
       ))}
@@ -79,9 +84,13 @@ const SidebarContent = ({ onClose, ...rest }) => {
 };
 
 
-const NavItem = ({ icon, children, ...rest }) => {
+const NavItem = ({ icon, children, path , ...rest}) => {
   return (
-    <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <Link 
+    as={ NavLink }
+    to={path}
+    style={{ textDecoration: 'none' }}
+     _focus={{ boxShadow: 'none' }}>
       <Flex
         align="center"
         p="2"

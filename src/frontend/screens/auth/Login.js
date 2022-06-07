@@ -13,7 +13,7 @@ import {
   } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { userLogin } from '../slice/authslice'; 
+import { userLogin } from '../../features/auth/authSlice'; 
 import { Link , useLocation , useNavigate} from 'react-router-dom';
 
 
@@ -112,7 +112,7 @@ const Login = () =>  {
               size={'sm'}
               alignSelf={'flex-end'}
               type='submit'
-              onClick = { () =>  loginHandler("adarshbalika" , "adarshBalika123")}
+              onClick = { () =>  loginHandler("narharikale" , "narharikale123")}
               >
               Guest Login
               </Button>
