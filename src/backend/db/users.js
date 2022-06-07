@@ -14,7 +14,8 @@ import { formatDate } from "../utils/authUtils";
     avatarURL:
       "https://github.com/narharikale.png",
     bio: "Frontend Developer | React",
-    website: "https://peerlist.io/narhari_k",
+    links: "https://peerlist.io/narhari_k",
+    city:"Pune , India",
     following: [
       {
         _id: uuid(),
@@ -96,7 +97,7 @@ import { formatDate } from "../utils/authUtils";
     avatarURL:
       "https://github.com/horsemaker.png",
     bio: "Full Stack Developer | why not ? ",
-    website: "https://peerlist.io/horsemaker",
+    links: "https://peerlist.io/horsemaker",
     following: [
       {
         _id: uuid(),
