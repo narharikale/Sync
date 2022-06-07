@@ -18,7 +18,7 @@ import {
     chakra,
     
   } from '@chakra-ui/react';
-import { useState , useEffect} from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '../../features/user/userSlice';
 

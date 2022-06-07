@@ -18,7 +18,7 @@ function Profile() {
     useEffect( () => {
         dispatch(getSingleUser(username))
         dispatch(getUserPosts(username))
-    }, [dispatch , currentUser])
+    }, [dispatch , username])
 
    
 
