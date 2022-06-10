@@ -9,17 +9,17 @@ import {
   Link,
   Drawer,
   DrawerContent,
-  useDisclosure,
 } from '@chakra-ui/react';
 
-import { HomeIcon ,  UsersIcon , ProfileIcon , NotificationIcon , SearchIcon} from '..';
+import { HomeIcon ,  UsersIcon , ProfileIcon , BookmarkIcon } from '..';
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom';
+import { MenuIcon } from '../icons/Menu';
 
 
 
-function SimpleSidebar({ children }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+function SimpleSidebar({ isOpen , onClose , children }) {
+  
   return (
     <Box minH="100vh">
       <SidebarContent
@@ -40,7 +40,7 @@ function SimpleSidebar({ children }) {
         </DrawerContent>
       </Drawer>
 
-      <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
+      
       <Box ml={{ base: 0, md: 60 }} >
         {children}
       </Box>
@@ -55,23 +55,22 @@ const SidebarContent = ({ onClose, ...rest }) => {
   const user = useSelector((state) => state.auth.user);
 
   const LinkItems = [
+    { name: 'Profile', icon: ProfileIcon  , path:`/profile/${user?.username}`},
     { name: 'Home', icon: HomeIcon  , path:'/'},
     { name: 'Network', icon: UsersIcon , path:'/network' },
-    { name: 'Find', icon: SearchIcon , path:'/find' },
-    { name: 'Notifications', icon: NotificationIcon , path:'/notifications'},
-    { name: 'Profile', icon: ProfileIcon  , path:`/profile/${user?.username}`},
+    { name: 'Bookmark', icon: BookmarkIcon, path:'/bookmark' },
+    
   ];
 
   return (
     <Box
-      
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
       w={{ base: 'full', md: 60 }}
       pos="fixed"
       h="full"
       {...rest} paddingTop={4}>
-      <Flex alignItems="center" justifyContent="space-between">
+      <Flex ml={4} alignItems="center" justifyContent="space-between">
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -123,24 +122,19 @@ const NavItem = ({ icon, children, path , ...rest}) => {
 
 const MobileNav = ({ onOpen, ...rest }) => {
   return (
-    <Flex
-      ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 24 }}
-      height="20"
+    <Flex  
       alignItems="center"
       bg={useColorModeValue('white', 'gray.900')}
-      borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
       justifyContent="flex-start"
       {...rest}>
       <IconButton
         variant="outline"
         onClick={onOpen}
         aria-label="open menu"
-        icon={<SearchIcon />}
+        icon={<MenuIcon />}
       />
     </Flex>
   );
 };
 
-export { SimpleSidebar }
+export { SimpleSidebar , MobileNav}

@@ -1,5 +1,4 @@
 import { v4 as uuid } from "uuid";
-import { formatDate } from "../utils/authUtils";
 
 /**
  * Posts can be added here.
@@ -10,14 +9,14 @@ export const posts = [
   //post 1
   {
   _id: uuid(),
-  content: "The journey of a thousand miles begins with one step.",
+  content: "dolor sit amet, consectetur adipisicing elit. sed nemo accusamus et, con",
   firstName: "Yash",
   lastName: "Ghodekar",
   username: "horsemaker",
   avatarURL:
     "https://github.com/horsemaker.png",
-  createdAt: formatDate(),
-  updatedAt: formatDate(),
+  createdAt: new Date("June 7 2022"),
+  updatedAt: new Date("June 7 2022"),
   likes: {
     likeCount: 2,
     likedBy: [
@@ -71,14 +70,13 @@ export const posts = [
 // Post 2
 {
   _id: uuid(),
-  content: "That which does not kill us makes us stronger.",
+  content: "consectetur adipisicing elit. sed nemo accusamus et, con",
   firstName: "Narhari",
   lastName: "Kale",
   username: "narharikale",
-  avatarURL:
-    "https://github.com/narharikale.png",
-  createdAt: formatDate(),
-  updatedAt: formatDate(),
+  avatarURL:"https://github.com/narharikale.png",
+  createdAt: new Date("June 1 2022"),
+  updatedAt: new Date("June 1 2022"),
   likes: {
     likeCount: 3,
     likedBy: [
@@ -95,13 +93,6 @@ export const posts = [
         lastName: "Tembugade",
         username: "vijaytembugade",
         avatarURL: "https://github.com/vijaytembugade.png",
-      },
-      {
-        _id: uuid(),
-        firstName: "Narhari",
-        lastName: "Kale",
-        username: "narharikale",
-        avatarURL: "https://github.com/narharikale.png",
       },
     ],
     dislikedBy: [],
@@ -134,19 +125,75 @@ export const posts = [
   ],
 },
 
-
+{
+  _id: uuid(),
+  content: "lorem ipsum dolor sit amet, consectetur adipisicing elit. sed nemo accusamus et, con",
+  firstName: "Rushikesh",
+  lastName: "Tarapure",
+  username: "t007rushi",
+  avatarURL:"https://github.com/t007rushi.png",
+  createdAt: new Date("May 15 2022"),
+  updatedAt: new Date("May 15 2022"),
+  likes: {
+    likeCount: 2,
+    likedBy: [
+      {
+        _id: uuid(),
+        firstName: "Vijay",
+        lastName: "Tembugade",
+        username: "vijaytembugade",
+        avatarURL: "https://github.com/vijaytembugade.png",
+      },
+      {
+        _id: uuid(),
+        firstName: "Narhari",
+        lastName: "Kale",
+        username: "narharikale",
+        avatarURL: "https://github.com/narharikale.png",
+      },
+    ],
+    dislikedBy: [],
+  },
+  
+  comments: [
+    {
+      _id: uuid(),
+      firstName: "Yash",
+      lastName: "Ghodekar",
+      username: "horsemaker",
+      avatarURL:"https://github.com/horsemaker.png",
+      text: "amzing",
+      votes: {
+        upvotedBy: [],
+        downvotedBy: [],
+      },
+    },
+    {
+      _id: uuid(),
+      firstName: "Vijay",
+      lastName: "Tembugade",
+      username: "vijaytembugade",
+      avatarURL:"https://github.com/vijaytembugade.png",
+      text: "great",
+      votes: {
+        upvotedBy: [],
+        downvotedBy: [],
+      },
+    },
+  ],
+},
 
 // Post 3
 {
   _id: uuid(),
-  content:"Memories warm you up from the inside. But they also tear you apart.",
+  content:"lorem ipsum dolor sit amet, consectetur adipisicing elit. sed nemo accusamus et, con.",
     firstName: "Miheer",
     lastName: "Tamkhane",
     avatarURL:"https://github.com/MiheerTamkhane.png",
     username: "MiheerTamkhane",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-  likes: {
+    createdAt: new Date("May 13 2022"),
+    updatedAt: new Date("May 13 2022"),
+    likes: {
     likeCount: 3,
     likedBy: [
       {
@@ -204,62 +251,5 @@ export const posts = [
 
 
 // Post 4
-{
-  _id: uuid(),
-  content:
-    "Memories warm you up from the inside. But they also tear you apart.",
-  firstName: "Rushikesh",
-  lastName: "Tarapure",
-  username: "t007rushi",
-  avatarURL:"https://github.com/t007rushi.png",
-  createdAt: formatDate(),
-  updatedAt: formatDate(),
-  likes: {
-    likeCount: 2,
-    likedBy: [
-      {
-        _id: uuid(),
-        firstName: "Vijay",
-        lastName: "Tembugade",
-        username: "vijaytembugade",
-        avatarURL: "https://github.com/vijaytembugade.png",
-      },
-      {
-        _id: uuid(),
-        firstName: "Narhari",
-        lastName: "Kale",
-        username: "narharikale",
-        avatarURL: "https://github.com/narharikale.png",
-      },
-    ],
-    dislikedBy: [],
-  },
-  
-  comments: [
-    {
-      _id: uuid(),
-      firstName: "Yash",
-      lastName: "Ghodekar",
-      username: "horsemaker",
-      avatarURL:"https://github.com/horsemaker.png",
-      text: "Interesting",
-      votes: {
-        upvotedBy: [],
-        downvotedBy: [],
-      },
-    },
-    {
-      _id: uuid(),
-      firstName: "Vijay",
-      lastName: "Tembugade",
-      username: "vijaytembugade",
-      avatarURL:"https://github.com/vijaytembugade.png",
-      text: "Interesting",
-      votes: {
-        upvotedBy: [],
-        downvotedBy: [],
-      },
-    },
-  ],
-},
+
 ]

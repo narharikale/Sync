@@ -92,7 +92,7 @@ const Login = () =>  {
             <Box 
               display={'flex'}
               justifyContent={'space-between'} >
-              {/* <Text color={'green.400'} >Forgot Password</Text> */}
+              
               <Button
               bg={'green.400'}
               color={'white'}

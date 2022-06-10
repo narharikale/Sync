@@ -30,7 +30,7 @@ function EditModal( { isOpen , onClose , singleUser } ) {
   const { token } = useSelector(state => state.auth);
   const dispatch = useDispatch()
   const userDetailChangeHandler = (e) => {
-    setUserDetails({
+      setUserDetails({
             ...userDetails,
             [e.target.name]:e.target.value
       });
@@ -38,8 +38,8 @@ function EditModal( { isOpen , onClose , singleUser } ) {
   } 
  
   const updateUserHandler = (token , updatedUserData) => {
-        dispatch(updateUser({token , updatedUserData}));
-        onClose();
+      dispatch(updateUser({token , updatedUserData}));
+      onClose();
   } 
     return (
       <>
@@ -61,22 +61,25 @@ function EditModal( { isOpen , onClose , singleUser } ) {
                 <Stack spacing={4}>
                     <HStack>
                     <Box>
-                        <FormControl id="firstName" >
+                        <FormControl id="firstName" 
+                        isReadOnly>
                         <FormLabel>First Name</FormLabel>
                         <Input 
                         type="text" 
                         name='firstName'
-                        value={userDetails?.firstName}
+                        
+                        defaultValue={singleUser?.firstName}
                         onChange={ userDetailChangeHandler }/>
                         </FormControl>
                     </Box>
                     <Box>
-                        <FormControl id="lastName">
+                        <FormControl id="lastName"
+                          isReadOnly>
                         <FormLabel>Last Name</FormLabel>
                         <Input
                            type="text" 
                            name='lastName'
-                           value={userDetails?.lastName}
+                           defaultValue={singleUser?.lastName}
                            onChange={ userDetailChangeHandler }/>
                         </FormControl>
                     </Box>
@@ -86,7 +89,7 @@ function EditModal( { isOpen , onClose , singleUser } ) {
                         <Input 
                         type="text" 
                         name='links'
-                        value={userDetails?.links}
+                        defaultValue={singleUser?.links}
                         onChange={ userDetailChangeHandler }/>
                     </FormControl>
                     <FormControl id="bio" >
@@ -95,7 +98,7 @@ function EditModal( { isOpen , onClose , singleUser } ) {
                             <Input 
                             type={'text'} 
                             name='bio'
-                            value={userDetails?.bio} 
+                            defaultValue={singleUser?.bio} 
                             onChange={ userDetailChangeHandler }/>
                             <InputRightElement h={'full'}>
                             </InputRightElement>

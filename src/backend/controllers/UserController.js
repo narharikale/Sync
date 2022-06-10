@@ -58,7 +58,7 @@ export const editUserHandler = function (schema, request) {
     const { updatedUserData } = JSON.parse(request.requestBody);
     user = { ...user, ...updatedUserData, updatedAt: formatDate() };
     this.db.users.update({ _id: user._id }, user);
-    return new Response(201, {}, { user });
+    return new Response(201, {}, { users:this.db.users });
   } catch (error) {
     return new Response(
       500,
@@ -242,7 +242,7 @@ export const followUserHandler = function (schema, request) {
     return new Response(
       200,
       {},
-      { users: this.db.users }
+      { users: this.db.users  , currentUser : updatedUser }
     );
   } catch (error) {
     return new Response(
@@ -307,7 +307,7 @@ export const unfollowUserHandler = function (schema, request) {
     return new Response(
       200,
       {},
-      { users: this.db.users }
+      { users: this.db.users  , currentUser : updatedUser }
     );
   } catch (error) {
     return new Response(

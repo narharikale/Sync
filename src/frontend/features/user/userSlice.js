@@ -16,13 +16,7 @@ const getAllUsers = createAsyncThunk(
         return data ;
     }
 );  
-const getSingleUser = createAsyncThunk(
-    "user/getSingleUser" , 
-    async( username )  => {
-        const { data }  = await axios.get(`/api/users/${username}`)
-        return data ;
-    }
-);  
+  
 const getUserPosts = createAsyncThunk(
     "user/getUserPosts" , 
     async( username ) => {
@@ -41,6 +35,31 @@ const updateUser = createAsyncThunk(
     }
 ); 
 
+const followUser = createAsyncThunk(
+	"user/follow",
+	async ({ token, followUserId }) => {
+        
+		const { data } = await axios.post(
+			`/api/users/follow/${followUserId}`,
+			{},
+			{ headers: { authorization: token } }
+		);
+		return data;
+	}
+);
+
+const unfollowUser = createAsyncThunk(
+	"user/unfollow",
+	async ({ token, followUserId }) => {
+        
+		const { data } = await axios.post(
+			`/api/users/unfollow/${followUserId}`,
+			{},
+			{ headers: { authorization: token } }
+		);
+		return data;
+	}
+);
 
 const userSlice = createSlice({
     name:'user',
@@ -56,17 +75,7 @@ const userSlice = createSlice({
             state.userStatus = 'rejected';
             state.error = error.message
         },
-        [getSingleUser.pending] : (state) => {
-            state.userStatus = 'loading';
-        },
-        [getSingleUser.fulfilled] : (state , { payload }) => {
-            state.userStatus ="success"
-            state.singleUser = payload.user;
-        },
-        [getSingleUser.rejected] : (state ,{ error } ) => {
-            state.userStatus = 'rejected';
-            state.error = error.message
-        },
+        
         [getUserPosts.fulfilled] : (state , { payload }) => {
             state.userStatus ="success"
             state.userPosts = payload.posts;
@@ -77,16 +86,28 @@ const userSlice = createSlice({
         },
         [updateUser.fulfilled] : (state , { payload }) => {
             state.userStatus ="success"
-            state.singleUser = payload.user;
+            state.allUsers = payload.users;
         },
         [updateUser.rejected] : (state ,{ error } ) => {
             state.userStatus = 'rejected';
             state.error = error.message
-        }
+        },
+        [followUser.fulfilled] : (state, { payload }) => {
+			state.allUsers = payload.users;
+		},
+		[followUser.rejected]: (state, { error }) => {
+			state.error = error.message;
+		},
+		[unfollowUser.fulfilled]:(state, { payload }) => {
+			state.allUsers = payload.users;
+		},
+		[unfollowUser.rejected]:(state, { error }) => {
+			state.error = error.message;
+		},
 
         
     }
 })
 
 export const userReducer = userSlice.reducer;
-export { getAllUsers , getSingleUser  , updateUser , getUserPosts } ; 
+export { getAllUsers , updateUser, followUser , unfollowUser , getUserPosts } ; 
