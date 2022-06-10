@@ -1,5 +1,6 @@
 import axios from "axios" ;
 import { createSlice , createAsyncThunk } from "@reduxjs/toolkit";
+import { followUser, unfollowUser } from "../user/userSlice";
 
 const initialState = {
 	status: null,
@@ -76,6 +77,12 @@ const authSlice = createSlice({
             state.status="rejected" ;
             state.error = payload
         },
+        [followUser.fulfilled] : (state , {payload}) => {
+            state.user = payload.currentUser;
+        },
+        [unfollowUser.fulfilled] : (state , {payload}) => {
+            state.user = payload.currentUser;
+        }
     }
 })
 
