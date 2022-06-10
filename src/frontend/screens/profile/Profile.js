@@ -2,25 +2,26 @@ import { LinkIcon } from "@chakra-ui/icons"
 import { Box, Text, Button, Link, IconButton, Image , useDisclosure } from "@chakra-ui/react"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { PostCard } from "../../components"
 import { EditModal } from "../../components/editModal/EditModal";
-import { getSingleUser, getUserPosts } from "../../features/user/userSlice";
+import { followUser, getUserPosts, unfollowUser } from "../../features/user/userSlice";
 
 
 function Profile() {
 
-    const currentUser = useSelector( (state) => state.auth.user);
-    const { singleUser , userPosts } = useSelector( (state) => state.user);
-    const username = currentUser?.username
+    const { username } = useParams();
+    const { user , token } = useSelector((state) => state.auth )
+    const { allUsers , userPosts } = useSelector( (state) => state.user);
+    const { allPosts } = useSelector( (state) => state.posts);
+    const currentUser = allUsers.find((user) => user.username === username )
     const dispatch = useDispatch();
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     useEffect( () => {
-        dispatch(getSingleUser(username))
         dispatch(getUserPosts(username))
-    }, [dispatch , username])
+    }, [dispatch , username , allPosts])
 
-   console.log(userPosts , "useposter")
 
     return (
         <Box
@@ -40,28 +41,55 @@ function Profile() {
                 <Box display={'flex'} flexDirection={'column'} gap={5}>
                     <Box display={'flex'} flexDirection={'column'} gap={2}>
                         <Box display="flex" alignItems='center' gap={5}>
-                            <Text fontSize={32} fontWeight={600} > { singleUser?.firstName} { singleUser?.lastName} </Text>
+                            <Text fontSize={32} fontWeight={600} > { currentUser?.firstName} { currentUser?.lastName} </Text>
 
-                            <Button variant='outline' onClick={onOpen}  size='sm'>Edit Profile</Button>
+                            { user?.username === currentUser?.username 
+                                ? (<Button variant='outline' onClick={onOpen}  size='sm'>Edit Profile</Button>)
+                                :( user?.following.find((user) => user.username === username)
+                                ?   (<Button 
+                                    variant='outline'
+                                    size='sm'
+                                    onClick= { () => {
+                                       dispatch( unfollowUser({ token:token, followUserId:currentUser?._id }) ) 
+                                    }}
+                                    >
+                                    UnFollow 
+                                    </Button>) 
+                                :
+                                (<Button 
+                                    variant='outline'
+                                    color={'white'} 
+                                    bg={'blackAlpha.800'}
+                                    _hover={{
+                                    backgroundColor:'blackAlpha.700'
+                                    }}
+                                    size='sm'
+                                    onClick= { () => {
+                                        dispatch( followUser({ token:token, followUserId:currentUser?._id }) ) 
+                                     }}
+                                >
+                                    Follow
+                                </Button>) 
+                                )
+                            }
                         </Box>
                         <Text fontSize={20}>
-                            {singleUser?.bio}
+                            {currentUser?.bio}
                         </Text>
                     </Box>
 
                     <Box align={'flex-end'} display={'flex'} alignItems={'center'} gap={5}>
-                        <Text>📍 {singleUser?.city} </Text>
-                        <Link href={singleUser?.links} isExternal>
+                        <Text>📍 {currentUser?.city} </Text>
+                        <Link href={currentUser?.links} isExternal>
                             <IconButton aria-label='Search database ' borderRadius='50%' icon={<LinkIcon />} />
                         </Link>
                     </Box>
                 </Box>
                 <Box>
                     <Box w={'10rem'} h={'10rem'}>
-                        <Image borderRadius='full' src={ singleUser?.avatarURL } alt='Profile Image' />
+                        <Image borderRadius='full' src={ currentUser?.avatarURL } alt='Profile Image' />
                     </Box>
                 </Box>
-
             </Box>
             <Box
              bg={'white'} 
@@ -72,12 +100,10 @@ function Profile() {
              >
                 { userPosts &&  userPosts.map( (post , index) => {
                     return <PostCard key={index}  post={ post }/>
-
                 })}
-               
             </Box>
             
-            { singleUser &&  <EditModal isOpen={ isOpen } onClose={ onClose } singleUser = { singleUser } /> }
+            { currentUser &&  <EditModal isOpen={ isOpen } onClose={ onClose } singleUser = { currentUser } /> }
         </Box>
     )
 }
