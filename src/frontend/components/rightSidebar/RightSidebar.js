@@ -50,7 +50,8 @@ function RightSidebar() {
             
 
       <Text
-        fontSize={'18px'} 
+        fontSize={'18px'}
+        paddingBottom={1.5} 
         borderBottom={'1px'} 
         borderColor={'gray.200'} 
         marginBottom={4} 

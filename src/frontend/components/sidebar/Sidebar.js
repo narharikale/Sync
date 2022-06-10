@@ -11,9 +11,10 @@ import {
   DrawerContent,
 } from '@chakra-ui/react';
 
-import { HomeIcon ,  UsersIcon , ProfileIcon , BookmarkIcon , SearchIcon} from '..';
+import { HomeIcon ,  UsersIcon , ProfileIcon , BookmarkIcon } from '..';
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom';
+import { MenuIcon } from '../icons/Menu';
 
 
 
@@ -57,20 +58,19 @@ const SidebarContent = ({ onClose, ...rest }) => {
     { name: 'Profile', icon: ProfileIcon  , path:`/profile/${user?.username}`},
     { name: 'Home', icon: HomeIcon  , path:'/'},
     { name: 'Network', icon: UsersIcon , path:'/network' },
-    { name: 'BookMark', icon: BookmarkIcon, path:'/bookmark' },
+    { name: 'Bookmark', icon: BookmarkIcon, path:'/bookmark' },
     
   ];
 
   return (
     <Box
-      
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
       w={{ base: 'full', md: 60 }}
       pos="fixed"
       h="full"
       {...rest} paddingTop={4}>
-      <Flex alignItems="center" justifyContent="space-between">
+      <Flex ml={4} alignItems="center" justifyContent="space-between">
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -122,21 +122,16 @@ const NavItem = ({ icon, children, path , ...rest}) => {
 
 const MobileNav = ({ onOpen, ...rest }) => {
   return (
-    <Flex
-      ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 24 }}
-      height="20"
+    <Flex  
       alignItems="center"
       bg={useColorModeValue('white', 'gray.900')}
-      borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
       justifyContent="flex-start"
       {...rest}>
       <IconButton
         variant="outline"
         onClick={onOpen}
         aria-label="open menu"
-        icon={<SearchIcon />}
+        icon={<MenuIcon />}
       />
     </Flex>
   );

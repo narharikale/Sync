@@ -17,7 +17,7 @@ export const Home = () => {
 
 
     return (
-        <Box w='100%' display={'flex'}>
+        <Box w='100%' display={'flex'} flexDirection={{base:'column' , lg:'row'}} >
                 <Box flexBasis={'65%'}>
                     <PostEditor/>
                     { allPosts && allPosts.map( (post , index ) => {

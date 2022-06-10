@@ -25,7 +25,7 @@ export const SinglePost = () => {
     }
 
     return (
-        <Box w='100%' display={'flex'}>
+        <Box w='100%' display={'flex'} flexDirection={{base:'column' , lg:'row'}} >
             <Box flexBasis={'65%'} height={'fit-content'} >
                 { post !== undefined ?
                     (<Box>
