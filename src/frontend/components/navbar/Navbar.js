@@ -24,6 +24,7 @@ function Navbar({ onOpen }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth)
+  
   const logoutHandler = () => {
     dispatch(logout());
     navigate('/login')
