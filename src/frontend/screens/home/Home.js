@@ -13,7 +13,7 @@ export const Home = () => {
     
     useEffect( () => {
         dispatch(getAllPosts());
-    } , [])
+    } , [dispatch])
 
 
     return (

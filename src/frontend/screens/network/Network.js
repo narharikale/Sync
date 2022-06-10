@@ -1,5 +1,4 @@
 import { Box } from "@chakra-ui/react";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { PostCard , RightSidebar } from "../../components";
 import { sortPosts } from "../../utlis/sortPosts";

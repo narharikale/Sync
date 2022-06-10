@@ -1,19 +1,9 @@
 import {
     Avatar,
     Box,
-    Button,
-    Input,
-    Flex,
     Stack,
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
     Text
 } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { PostCard, RightSidebar, VerticalmoreIcon } from "../../components";
 
 
 const CommentCard = ({ comment }) => {

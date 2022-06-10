@@ -9,7 +9,6 @@ import {
   Link,
   Drawer,
   DrawerContent,
-  useDisclosure,
 } from '@chakra-ui/react';
 
 import { HomeIcon ,  UsersIcon , ProfileIcon , BookmarkIcon , SearchIcon} from '..';

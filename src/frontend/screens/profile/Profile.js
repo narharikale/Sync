@@ -3,7 +3,7 @@ import { Box, Text, Button, Link, IconButton, Image , useDisclosure } from "@cha
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { PostCard } from "../../components"
+import { PostCard } from "../../components";
 import { EditModal } from "../../components/editModal/EditModal";
 import { followUser, getUserPosts, unfollowUser } from "../../features/user/userSlice";
 
