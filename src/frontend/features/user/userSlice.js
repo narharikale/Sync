@@ -38,7 +38,7 @@ const updateUser = createAsyncThunk(
 const followUser = createAsyncThunk(
 	"user/follow",
 	async ({ token, followUserId }) => {
-        console.log(token ,followUserId ,  "folooe")
+        
 		const { data } = await axios.post(
 			`/api/users/follow/${followUserId}`,
 			{},
@@ -51,7 +51,7 @@ const followUser = createAsyncThunk(
 const unfollowUser = createAsyncThunk(
 	"user/unfollow",
 	async ({ token, followUserId }) => {
-        console.log(token ,followUserId ,  "un")
+        
 		const { data } = await axios.post(
 			`/api/users/unfollow/${followUserId}`,
 			{},

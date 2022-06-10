@@ -26,7 +26,6 @@ import { updateUser } from '../../features/user/userSlice';
 
 function EditModal( { isOpen , onClose , singleUser } ) {
 
-  console.log(singleUser , " single")
   const [userDetails, setUserDetails] = useState(singleUser);  
   const { token } = useSelector(state => state.auth);
   const dispatch = useDispatch()
