@@ -12,14 +12,14 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-import { HomeIcon ,  UsersIcon , ProfileIcon , NotificationIcon , SearchIcon} from '..';
+import { HomeIcon ,  UsersIcon , ProfileIcon , BookmarkIcon , SearchIcon} from '..';
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom';
 
 
 
-function SimpleSidebar({ children }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+function SimpleSidebar({ isOpen , onClose , children }) {
+  
   return (
     <Box minH="100vh">
       <SidebarContent
@@ -40,7 +40,7 @@ function SimpleSidebar({ children }) {
         </DrawerContent>
       </Drawer>
 
-      <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
+      
       <Box ml={{ base: 0, md: 60 }} >
         {children}
       </Box>
@@ -55,11 +55,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
   const user = useSelector((state) => state.auth.user);
 
   const LinkItems = [
+    { name: 'Profile', icon: ProfileIcon  , path:`/profile/${user?.username}`},
     { name: 'Home', icon: HomeIcon  , path:'/'},
     { name: 'Network', icon: UsersIcon , path:'/network' },
-    { name: 'Find', icon: SearchIcon , path:'/find' },
-    { name: 'Notifications', icon: NotificationIcon , path:'/notifications'},
-    { name: 'Profile', icon: ProfileIcon  , path:`/profile/${user?.username}`},
+    { name: 'BookMark', icon: BookmarkIcon, path:'/bookmark' },
+    
   ];
 
   return (
@@ -143,4 +143,4 @@ const MobileNav = ({ onOpen, ...rest }) => {
   );
 };
 
-export { SimpleSidebar }
+export { SimpleSidebar , MobileNav}
