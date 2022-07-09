@@ -117,9 +117,9 @@ const Login = () =>  {
               Guest Login
               </Button>
             </Box>
-            <Center>Dont have an account ? 
-              <Text as ={ Link } to='/signup' color={'green.400'} display={'inline'} >
-                join Sync 
+            <Center>Dont have an account ?  
+              <Text as ={ Link } to='/signup' color={'green.400'} display={'inline'} ml={'1'} >
+                  join Sync 
               </Text> 
             </Center>
         </Stack>

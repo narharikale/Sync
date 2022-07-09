@@ -30,7 +30,7 @@ function PostCard({ post }) {
 
   const { token, user } = useSelector((state) => state.auth);
   const { bookmarks } = useSelector((state) => state.bookmarks);
-  const { firstName, lastName, avatarURL, createdAt, content, likes , username } = post === undefined ? {} : post
+  const { firstName, lastName, avatarURL, createdAt, content, likes, username } = post === undefined ? {} : post
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -39,7 +39,7 @@ function PostCard({ post }) {
     <Center
       cursor={'pointer'}
       onClick={(e) => {
-        e.stopPropagation();
+        e.stopPropagation()
         navigate(`/post/${post._id}`);
       }}>
       <Box
@@ -63,11 +63,13 @@ function PostCard({ post }) {
               <Text color={'gray.500'}> {timeFormatter(Date.parse(createdAt))} ago </Text>
               <Box mt={2}>{content}</Box>
               <Flex mt={4} gap={5} alignItems={'center'}>
-                <Box onClick={(e) => {
-                  e.stopPropagation()
-                }}
+                <Box 
                 >
-                  <CommentIcon />
+                  <CommentIcon onClick={(e) => {
+                    console.log('clicl')
+                    e.stopPropagation();
+                    navigate(`/post/${post._id}`);
+                  }} />
                 </Box>
                 <Flex gap={1}>
                   {post?.likes?.likedBy.find((curruser) => user.username === curruser.username) ?
@@ -111,43 +113,43 @@ function PostCard({ post }) {
               </Flex>
             </Box>
           </Stack>
-          {user?.username === username && 
+          {user?.username === username &&
             <Box>
-            <Menu>
-              <MenuButton
-                as={Button}
-                size='sm'
-                borderColor={'gray.300'}
-                bg={'white'}
-                onClick={(e) => e.stopPropagation(e)}
-              >
-                <VerticalmoreIcon />
-              </MenuButton>
-              <MenuList
-                border='1px solid black'
-                boxShadow='3px 3px 0px #212121'
-                p='4px'
-                rounded='4px'
-                bg='white'
-                alignItems={'center'}>
-                <MenuItem display="flex" gap='2px'
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    onOpen()
-                  }}> Edit
-                </MenuItem>
-                <MenuItem
-                  display="flex"
-                  gap='2px'
-                  onClick={(e) => {
-                    e.stopPropagation(e)
-                    dispatch(deletePost({ token: token, postId: post._id }))
-                  }}
-                > Delete</MenuItem>
-              </MenuList>
-            </Menu>
-          </Box>
-        }
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  size='sm'
+                  borderColor={'gray.300'}
+                  bg={'white'}
+                  onClick={(e) => e.stopPropagation(e)}
+                >
+                  <VerticalmoreIcon />
+                </MenuButton>
+                <MenuList
+                  border='1px solid black'
+                  boxShadow='3px 3px 0px #212121'
+                  p='4px'
+                  rounded='4px'
+                  bg='white'
+                  alignItems={'center'}>
+                  <MenuItem display="flex" gap='2px'
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      onOpen()
+                    }}> Edit
+                  </MenuItem>
+                  <MenuItem
+                    display="flex"
+                    gap='2px'
+                    onClick={(e) => {
+                      e.stopPropagation(e)
+                      dispatch(deletePost({ token: token, postId: post._id }))
+                    }}
+                  > Delete</MenuItem>
+                </MenuList>
+              </Menu>
+            </Box>
+          }
 
         </Stack>
       </Box>

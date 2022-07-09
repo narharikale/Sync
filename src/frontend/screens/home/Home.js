@@ -9,8 +9,14 @@ export const Home = () => {
 
     const dispatch = useDispatch();
      
-    const  { allPosts } = useSelector( (state) => state.posts );
+    const { allPosts } = useSelector( (state) => state.posts );
     
+    const newpost = []
+    
+    for(let i=allPosts?.length-1 ; i >= 0 ; i--){
+        newpost.push(allPosts[i])
+    }
+
     useEffect( () => {
         dispatch(getAllPosts());
     } , [dispatch])
@@ -20,7 +26,7 @@ export const Home = () => {
         <Box w='100%' display={'flex'} flexDirection={{base:'column' , lg:'row'}} >
                 <Box flexBasis={'65%'}>
                     <PostEditor/>
-                    { allPosts && allPosts.map( (post , index ) => {
+                    { allPosts && newpost?.map( (post , index ) => {
                         return <PostCard key={index}  post={ post }/>
                     })
                     }
